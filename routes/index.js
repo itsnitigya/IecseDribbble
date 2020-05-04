@@ -4,6 +4,7 @@ const to = require("../utils/to");
 const auth = require('./auth.js');
 const post = require('./post.js');
 const user = require('./user.js');
+const test = require('./test.js');
 const userActions = require('./userActions.js');
 
 function isLoggedIn(req, res, next) {
@@ -13,7 +14,7 @@ function isLoggedIn(req, res, next) {
 
 //add joi validation
 
-router.post("/ping" ,test.ping);
+router.post("/ping" , test.ping);
 
 router.post("/signup" , auth.signup);
 router.post("/login" , auth.login);

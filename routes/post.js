@@ -24,7 +24,7 @@ const fileFilter = (req, file, cb) => {
     if (allowedMimetypes.has(file.mimetype)) {
       cb(null, true);
     } else {
-      cb(new Error('Invalid file type, Please send only valid notes!'), false);
+      cb(new Error('Invalid file type!'), false);
     }
 };
   
@@ -55,9 +55,10 @@ exp.posts = async(req,res) => {
         } else {
             let postID = uuid();
             let userID = req.session.key.userID;
+            console.log(req.session.key.username);
             let postURl = req.file.location;
             let title  = req.body.title;
-            let username  = req.body.username;
+            let username  = req.session.key.username;
             let profileURL = req.session.key.profileURL;
             let loveCount = 0;
             let commentCount = 0;

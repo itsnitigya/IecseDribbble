@@ -23,7 +23,7 @@ const fileFilter = (req, file, cb) => {
     if (allowedMimetypes.has(file.mimetype)) {
       cb(null, true);
     } else {
-      cb(new Error('Invalid file type, Please send only valid notes!'), false);
+      cb(new Error('Invalid file type'), false);
     }
 };
   

@@ -15,7 +15,7 @@ exp.signup = async (req,res) => {
     let password;
     [err , password] = await to(bcrypt.hash(req.body.password , saltRounds));
     let userID = sha(email);
-    [err , result] = await to(db.query("insert into users values(?,?,?,?,?,?)" , [userID, username , email , password , 0 , 0]));
+    [err , result] = await to(db.query("insert into users values(?,?,?,?,?,?,?,?)" , [userID, username , email , password , 0 , 0 , null, null]));
     if(err)
       return res.sendError(err);
     return res.sendSuccess("user signed up");
@@ -26,10 +26,11 @@ exp.login = async (req,res) =>{
     let password = req.body.password;
     let err , result , userData;
     [err, userData] = await to(db.query("select * from users where email = ?" ,[email] ));
+    console.log(userData);
     if(err) return res.sendError("email ID not found");
-    [err , result] = bcrypt.compare(password, result[0].password);
+    [err , result] = await to (bcrypt.compare(password, userData[0].password));
     if(result == false) return res.sendError("incorrect email/password")
-    req.session.key = userData;
+    req.session.key = userData[0];
     req.session.save(() => {
       return res.sendSuccess(userData);
     });

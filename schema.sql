@@ -16,7 +16,7 @@ CREATE TABLE `posts` (
 	`postURL` varchar(255) NOT NULL,
 	`title` varchar(255) NOT NULL,
 	`username` varchar(255) NOT NULL,
-	`profileURL` varchar(255) NOT NULL,
+	`profileURL` varchar(255),
 	`loveCount` INT(11) NOT NULL,
 	`commentCount` INT(11) NOT NULL,
 	PRIMARY KEY (`postID`)
@@ -30,13 +30,13 @@ CREATE TABLE `votes` (
 );
 
 CREATE TABLE `comments` (
-	`commentID` varchar(255) NOT NULL AUTO_INCREMENT,
+	`commentID` varchar(255) NOT NULL,
 	`userID` varchar(255) NOT NULL,
 	`parentCommentID` varchar(255) NOT NULL,
 	`postID` varchar(255) NOT NULL,
 	`body` varchar(255) NOT NULL,
 	`createdAt` TIMESTAMP NOT NULL,
-	`mentions` varchar(255) NOT NULL,
+	`mentions` varchar(255),
 	PRIMARY KEY (`commentID`)
 );
 

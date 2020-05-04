@@ -1,7 +1,7 @@
 {
-  "name": "calendify",
+  "name": "iecse-dribbble",
   "version": "1.0.0",
-  "description": "Calendar Invites",
+  "description": "IECSE Dribbble",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +9,8 @@
   "author": "Nitigya Kapoor",
   "license": "MIT",
   "dependencies": {
+    "aws-sdk": "^2.668.0",
+    "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "config": "^3.0.1",
     "connect-redis": "^3.4.0",
@@ -23,12 +25,15 @@
     "joi": "^14.3.1",
     "loader": "^2.1.1",
     "morgan": "^1.9.1",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
     "mysql": "^2.16.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "promise-mysql": "^3.3.1",
     "redis": "^2.8.0",
     "save": "^2.3.3",
-    "sequelize": "^5.21.2"
+    "sequelize": "^5.21.2",
+    "sha1": "^1.1.1"
   }
 }
