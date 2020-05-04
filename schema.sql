@@ -1,15 +1,18 @@
 CREATE TABLE `users` (
-	`userID` INT(11) NOT NULL AUTO_INCREMENT,
+	`userID` varchar(255) NOT NULL,
 	`username` varchar(255) NOT NULL,
 	`email` varchar(255) NOT NULL,
 	`password` varchar(255) NOT NULL,
-	`profileURL` varchar(255) NOT NULL,
+	`followers` INT(11) NOT NULL,
+	`mentionCount` INT(11) NOT NULL,
+	`profileURL` varchar(255),
+	`bio` varchar(255),
 	PRIMARY KEY (`userID`)
 );
 
 CREATE TABLE `posts` (
 	`postID` varchar(255) NOT NULL,
-	`userID` INT(11) NOT NULL,
+	`userID` varchar(255) NOT NULL,
 	`postURL` varchar(255) NOT NULL,
 	`title` varchar(255) NOT NULL,
 	`username` varchar(255) NOT NULL,
@@ -28,13 +31,19 @@ CREATE TABLE `votes` (
 
 CREATE TABLE `comments` (
 	`commentID` varchar(255) NOT NULL AUTO_INCREMENT,
-	`userID` INT(11) NOT NULL,
+	`userID` varchar(255) NOT NULL,
 	`parentCommentID` varchar(255) NOT NULL,
 	`postID` varchar(255) NOT NULL,
 	`body` varchar(255) NOT NULL,
 	`createdAt` TIMESTAMP NOT NULL,
 	`mentions` varchar(255) NOT NULL,
 	PRIMARY KEY (`commentID`)
+);
+
+CREATE TABLE `follows` (
+	`userID` varchar(255) NOT NULL,
+	`followID` varchar(255) NOT NULL,
+	PRIMARY KEY (`followID` , `userID`)
 );
 
 ALTER TABLE `posts` ADD CONSTRAINT `posts_fk0` FOREIGN KEY (`userID`) REFERENCES `users`(`userID`);

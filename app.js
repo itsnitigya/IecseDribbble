@@ -26,7 +26,7 @@ app.use(
     //   ttl: 604800
     // }),
     cookie: {
-      maxAge: 6044800
+      maxAge: 604480000
     }
   })
 );
